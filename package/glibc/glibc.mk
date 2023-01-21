@@ -18,21 +18,21 @@ else
 #   git describe --match 'glibc-*' --abbrev=40 origin/release/MAJOR.MINOR/master | cut -d '-' -f 2-
 # When updating the version, please also update localedef
 #GLIBC_VERSION = 2.35-134-gb6aade18a7e5719c942aa2da6cf3157aca993fa4
-GLIBC_VERSION = 2.12.2
+GLIBC_VERSION = 2.31
 
-GLIBC_PORTS_VERSION = 2.12.1
-GLIBC_PORTS_SOURCE = glibc-ports-$(GLIBC_PORTS_VERSION).tar.bz2
+GLIBC_PORTS_VERSION = 2.31
+#GLIBC_PORTS_SOURCE = glibc-ports-$(GLIBC_PORTS_VERSION).tar.bz2
 
-GLIBC_EXTRA_DOWNLOADS = https://ftp.gnu.org/gnu/glibc/$(GLIBC_PORTS_SOURCE)
+#GLIBC_EXTRA_DOWNLOADS = https://ftp.gnu.org/gnu/glibc/$(GLIBC_PORTS_SOURCE)
 
-define GLIBC_EXTRACT_PORTS
-	@mkdir $(@D)/ports
-	$(call suitable-extractor,$(GLIBC_PORTS_SOURCE)) \
-		$(GLIBC_DL_DIR)/$(GLIBC_PORTS_SOURCE) | \
-		$(TAR) --strip-components=1 -C $(@D)/ports $(TAR_OPTIONS) -
-endef
+#define GLIBC_EXTRACT_PORTS
+#	@mkdir $(@D)/ports
+#	$(call suitable-extractor,$(GLIBC_PORTS_SOURCE)) \
+#		$(GLIBC_DL_DIR)/$(GLIBC_PORTS_SOURCE) | \
+#		$(TAR) --strip-components=1 -C $(@D)/ports $(TAR_OPTIONS) -
+#endef
 
-GLIBC_POST_EXTRACT_HOOKS += GLIBC_EXTRACT_PORTS
+#GLIBC_POST_EXTRACT_HOOKS += GLIBC_EXTRACT_PORTS
 
 # Upstream doesn't officially provide an https download link.
 # There is one (https://sourceware.org/git/glibc.git) but it's not reliable,
